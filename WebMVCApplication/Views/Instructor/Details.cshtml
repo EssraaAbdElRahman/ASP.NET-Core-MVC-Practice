@@ -1,0 +1,97 @@
+﻿@using WebMVCApplication.ViewModels.Instructor
+@model InstructorDetailsViewModel
+
+@if (Model == null)
+{
+    <div class="alert alert-danger text-center mt-4">
+        <h5 class="mb-0">Instructor Not Found</h5>
+    </div>
+}
+else
+{
+    <div class="container py-5">
+
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+
+            <div class="row g-0">
+
+                <!-- Image -->
+                <div class="col-md-4 bg-light d-flex justify-content-center align-items-center p-4">
+
+                    <img src="~/Images/@Model.Image"
+                         alt="@Model.Name"
+                         class="img-fluid rounded-circle border shadow"
+                         style="width:250px;height:250px;object-fit:cover;" />
+
+                </div>
+
+                <!-- Details -->
+                <div class="col-md-8">
+
+                    <div class="card-body p-5">
+
+                        <span class="badge bg-primary mb-3">
+                            Instructor ID : @Model.Id
+                        </span>
+
+                        <h2 class="fw-bold mb-4">
+                            @Model.Name
+                        </h2>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold text-secondary">
+                                    Address
+                                </label>
+                                <p class="fs-5">
+                                    @Model.Address
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold text-secondary">
+                                    Salary
+                                </label>
+                                <p class="fs-5 text-success">
+                                    @Model.Salary.ToString("C")
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold text-secondary">
+                                    Course
+                                </label>
+                                <p class="fs-5">
+                                    @(Model.CourseName ?? "Not Assigned")
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold text-secondary">
+                                    Department
+                                </label>
+                                <p class="fs-5">
+                                    @(Model.DepartmentName ?? "Not Assigned")
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <hr />
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-primary">
+                            Back To List
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}
