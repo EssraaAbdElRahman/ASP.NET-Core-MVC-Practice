@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebMVCApplication.AppContext;
-using WebMVCApplication.Models;
 using WebMVCApplication.Services;
-using WebMVCApplication.Services.Interfaces;
 using WebMVCApplication.ViewModels.Instructor;
 
 namespace WebMVCApplication.Controllers
@@ -30,13 +28,13 @@ namespace WebMVCApplication.Controllers
                     Image = i.Image,
                     Address = i.Address,
                     Salary = i.Salary,
-                    CourseName = i.Course?.Name,
-                    DepartmentName = i.Department?.Name
+                    CourseName = i.Course.Name,
+                    DepartmentName = i.Department.Name
                 }).ToList();
 
             return View(instructorViewModels);
         }
-        }
+        
         public IActionResult Details(int id)
         {
             if (id <= 0)
@@ -53,8 +51,8 @@ namespace WebMVCApplication.Controllers
                         Image = instructor.Image,
                         Address = instructor.Address,
                         Salary = instructor.Salary,
-                        CourseName = instructor.Course?.Name,
-                        DepartmentName = instructor.Department?.Name
+                        CourseName = instructor.Course.Name,
+                        DepartmentName = instructor.Department.Name
                     };
                     return View("Details", viewModel);
                 }

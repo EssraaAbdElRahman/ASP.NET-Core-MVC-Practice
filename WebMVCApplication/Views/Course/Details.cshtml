@@ -1,0 +1,96 @@
+﻿@using WebMVCApplication.ViewModels.Course
+@model CourseDetailsViewModel
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+@if (Model == null)
+{
+    <div class="alert alert-danger text-center mt-4">
+        <h5 class="mb-0">Course Not Found</h5>
+    </div>
+}
+else
+{
+    <div class="container mt-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">
+                    <i class="bi bi-book"></i>
+                    Course Details
+                </h3>
+            </div>
+
+            <div class="card-body p-4">
+
+                <div class="mb-4">
+                    <span class="badge bg-secondary fs-6">
+                        Course ID : @Model.CourseId
+                    </span>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+                        <label class="fw-bold text-muted">
+                            Course Name
+                        </label>
+
+                        <div class="form-control bg-light">
+                            @Model.CourseName
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="fw-bold text-muted">
+                            Department
+                        </label>
+
+                        <div class="form-control bg-light">
+                            @(Model.DeptName ?? "Not Assigned")
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="fw-bold text-muted">
+                            Course Degree
+                        </label>
+
+                        <div class="form-control bg-light">
+                            @Model.CourseDegree
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label class="fw-bold text-muted">
+                            Minimum Degree
+                        </label>
+
+                        <div class="form-control bg-light">
+                            @Model.CourseMinDegree
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-footer bg-white">
+
+                <a asp-action="Index"
+                   class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i>
+                    Back To List
+                </a>
+
+                
+
+            </div>
+
+        </div>
+
+    </div>
+}
