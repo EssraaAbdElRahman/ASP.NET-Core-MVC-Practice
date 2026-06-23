@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
+﻿
 namespace WebMVCApplication.Models
 {
     public class CourseResult

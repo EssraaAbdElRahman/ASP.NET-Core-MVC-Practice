@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using WebMVCApplication.Models;
 
-namespace WebMVCApplication.Validator
+namespace WebMVCApplication.Validator.Courses
 {
     public class CourseValidator:AbstractValidator<Course>
     {
@@ -10,9 +10,10 @@ namespace WebMVCApplication.Validator
             RuleFor(c => c.Name)
                 .NotEmpty()
                 .WithMessage("Course name is required.")
+                .MinimumLength(2)
+                .WithMessage("Course name must be at least 2 characters.")
                 .MaximumLength(100)
                 .WithMessage("Course name cannot exceed 100 characters.");
-
             RuleFor(c => c.Degree)
                 .GreaterThan(0)
                 .WithMessage("Degree must be greater than 0.");

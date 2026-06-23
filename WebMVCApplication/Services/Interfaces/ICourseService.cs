@@ -1,4 +1,5 @@
 ﻿using WebMVCApplication.Models;
+using WebMVCApplication.ViewModels.Course;
 using WebMVCApplication.ViewModels.Department;
 
 namespace WebMVCApplication.Services.Interfaces
@@ -9,5 +10,7 @@ namespace WebMVCApplication.Services.Interfaces
         Course? Details(int Id);
         void Create(Course course);
         IEnumerable<DepartmentListViewModel> DepartmentList();
+        void Edit (Course course);
+        //void Edit(CourseEditViewModel viewModel);
     }
 }

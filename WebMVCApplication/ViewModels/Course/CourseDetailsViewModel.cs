@@ -9,5 +9,6 @@
         public double CourseMinDegree { get; set; }
         public int DeptId { get; set; }
         public string DeptName { get; set; }
+        public int CourseHours { get; set; }
     }
 }

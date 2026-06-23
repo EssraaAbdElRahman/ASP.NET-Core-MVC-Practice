@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 using WebMVCApplication.Models;
 
 namespace WebMVCApplication.Validator

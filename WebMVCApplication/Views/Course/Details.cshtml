@@ -15,78 +15,96 @@ else
 {
     <div class="container mt-4">
 
-        <div class="card shadow border-0">
+        <div class="card shadow border-0 rounded-3">
 
+            <!-- Header -->
             <div class="card-header bg-primary text-white">
-                <h3 class="mb-0">
+                <h3 class="mb-0 d-flex align-items-center gap-2">
                     <i class="bi bi-book"></i>
                     Course Details
                 </h3>
             </div>
 
+            <!-- Body -->
             <div class="card-body p-4">
 
-                <div class="mb-4">
-                    <span class="badge bg-secondary fs-6">
+                <div class="mb-3">
+                    <span class="badge bg-secondary fs-6 px-3 py-2">
                         Course ID : @Model.CourseId
                     </span>
                 </div>
 
-                <div class="row">
+                <div class="row g-3">
 
-                    <div class="col-md-6 mb-4">
-                        <label class="fw-bold text-muted">
+                    <!-- Course Name -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small mb-1">
                             Course Name
                         </label>
-
-                        <div class="form-control bg-light">
+                        <div class="p-2 px-3 bg-light border rounded shadow-sm">
                             @Model.CourseName
                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-4">
-                        <label class="fw-bold text-muted">
-                            Department
+                    <!-- Course Hours -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small mb-1">
+                            Course Hours
                         </label>
-
-                        <div class="form-control bg-light">
-                            @(Model.DeptName ?? "Not Assigned")
+                        <div class="p-2 px-3 bg-light border rounded shadow-sm">
+                            @Model.CourseHours
                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-4">
-                        <label class="fw-bold text-muted">
+                    <!-- Course Degree -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small mb-1">
                             Course Degree
                         </label>
-
-                        <div class="form-control bg-light">
+                        <div class="p-2 px-3 bg-light border rounded shadow-sm">
                             @Model.CourseDegree
                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-4">
-                        <label class="fw-bold text-muted">
+                    <!-- Minimum Degree -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small mb-1">
                             Minimum Degree
                         </label>
-
-                        <div class="form-control bg-light">
+                        <div class="p-2 px-3 bg-light border rounded shadow-sm">
                             @Model.CourseMinDegree
                         </div>
                     </div>
+                    <!-- Department -->
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small mb-1">
+                            Department
+                        </label>
+                        <div class="p-2 px-3 bg-light border rounded shadow-sm">
+                            @(Model.DeptName ?? "Not Assigned")
+                        </div>
+                    </div>
+
 
                 </div>
 
             </div>
 
-            <div class="card-footer bg-white">
+            <!-- Footer -->
+            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
 
                 <a asp-action="Index"
-                   class="btn btn-outline-secondary">
+                   class="btn btn-outline-secondary d-inline-flex align-items-center gap-2">
                     <i class="bi bi-arrow-left"></i>
-                    Back To List
+                    Back
                 </a>
 
-                
+                <a asp-action="Edit"
+                   asp-route-id="@Model.CourseId"
+                   class="btn btn-primary d-inline-flex align-items-center gap-2 px-4 shadow-sm">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit Course
+                </a>
 
             </div>
 
@@ -94,3 +112,13 @@ else
 
     </div>
 }
+
+<style>
+    .card-footer .btn {
+        transition: 0.2s ease-in-out;
+    }
+
+        .card-footer .btn:hover {
+            transform: translateY(-2px);
+        }
+</style>

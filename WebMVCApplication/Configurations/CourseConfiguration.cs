@@ -10,11 +10,17 @@ namespace WebMVCApplication.Configurations
         {
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Name)
-                .IsRequired()
-                .HasMaxLength(100);
+                   .IsRequired()
+                   .HasMaxLength(100);
+            builder.HasIndex(c => new { c.Name, c.DepartmentId })
+                   .IsUnique();
+
             builder.Property(c => c.Degree)
                 .IsRequired()
                 .HasColumnType("float");
+            builder.Property(c=>c.Houre)
+                   .HasColumnType("int")
+                   .IsRequired();
             builder.Property(c => c.MinDegree)
                 .IsRequired()
                 .HasColumnType("float");

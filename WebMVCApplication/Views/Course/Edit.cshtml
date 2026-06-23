@@ -1,8 +1,8 @@
 ﻿@using WebMVCApplication.ViewModels.Course
-@model CourseCreateNewViewModel
+@model CourseEditViewModel
 
 @{
-    ViewData["Title"] = "Create Course";
+    ViewData["Title"] = "Edit Course";
 }
 
 <div class="container py-5">
@@ -13,16 +13,18 @@
 
             <div class="card shadow border-0">
 
-                <div class="card-header bg-success text-white py-3">
+                <div class="card-header bg-primary text-white py-3">
                     <h3 class="mb-0">
-                        <i class="bi bi-journal-plus me-2"></i>
-                        Create New Course
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Edit Course
                     </h3>
                 </div>
 
                 <div class="card-body p-4">
 
-                    <form asp-action="SaveNew" method="post">
+                    <form asp-action="SaveEdit" method="post">
+
+                        <input asp-for="CourseId" type="hidden" />
 
                         <div asp-validation-summary="All"
                              class="text-danger">
@@ -33,12 +35,10 @@
                             <div class="col-md-12">
                                 <label asp-for="CourseName"
                                        class="form-label fw-semibold">
-                                    Course Name
                                 </label>
 
                                 <input asp-for="CourseName"
-                                       class="form-control"
-                                       placeholder="Enter course name" />
+                                       class="form-control" />
 
                                 <span asp-validation-for="CourseName"
                                       class="text-danger"></span>
@@ -47,7 +47,6 @@
                             <div class="col-md-6">
                                 <label asp-for="CourseDegree"
                                        class="form-label fw-semibold">
-                                    Degree
                                 </label>
 
                                 <input asp-for="CourseDegree"
@@ -61,7 +60,6 @@
                             <div class="col-md-6">
                                 <label asp-for="CourseMinDegree"
                                        class="form-label fw-semibold">
-                                    Minimum Degree
                                 </label>
 
                                 <input asp-for="CourseMinDegree"
@@ -75,7 +73,6 @@
                             <div class="col-md-6">
                                 <label asp-for="CourseHours"
                                        class="form-label fw-semibold">
-                                    Hours
                                 </label>
 
                                 <input asp-for="CourseHours"
@@ -94,10 +91,6 @@
 
                                 <select asp-for="CourseDeptId"
                                         class="form-select">
-
-                                    <option value="">
-                                        Select Department
-                                    </option>
 
                                     @foreach (var dept in Model.Departments)
                                     {
@@ -119,9 +112,9 @@
                         <div class="d-flex gap-2">
 
                             <button type="submit"
-                                    class="btn btn-success px-4">
-                                <i class="bi bi-check-circle me-1"></i>
-                                Save
+                                    class="btn btn-primary px-4">
+                                <i class="bi bi-save me-1"></i>
+                                Update
                             </button>
 
                             <a asp-action="Index"
