@@ -74,15 +74,35 @@ namespace WebMVCApplication.Controllers
         {
             if (!ModelState.IsValid)
             {
+
                  
                 instructorViewModel.Courses = instructorService.CoursesList().ToList();
                 instructorViewModel.Departments = instructorService.DepartmentList().ToList();
 
-                return View("Create",instructorViewModel);
+                return View("Create", instructorViewModel);
+
             }
             try
             {
-                instructorService.Create(
+                if (instructorViewModel.ImageFile != null)
+                {
+                    string fileName = Guid.NewGuid().ToString()
+                                      + Path.GetExtension(instructorViewModel.ImageFile.FileName);
+
+                    string folderPath = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot/images");
+
+                    string filePath = Path.Combine(folderPath, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        instructorViewModel.ImageFile.CopyTo(stream);
+                    }
+                    instructorViewModel.ImageUrl = fileName;
+                }
+
+                    instructorService.Create(
                     new()
                     {
                          Name = instructorViewModel.InstructorName,
@@ -92,6 +112,7 @@ namespace WebMVCApplication.Controllers
                          DepartmentId=instructorViewModel.InstructorDepartmentId,
                          CourseId=instructorViewModel.InstructorCourseId
                     });
+
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

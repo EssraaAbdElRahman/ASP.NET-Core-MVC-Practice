@@ -75,9 +75,9 @@ namespace WebMVCApplication.Services
                      .SingleOrDefault(i => i.Id == Id);
         }
 
-        public IEnumerable<Course> GetAll()
+        public IQueryable<Course> GetAll()
         {
-            return _context.Courses.Include(i => i.Department).ToList();
+            return _context.Courses.Include(i => i.Department);
         }
 
         public void Edit(Course course)

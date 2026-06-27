@@ -2,6 +2,7 @@
 
 namespace WebMVCApplication.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class DivisibleByThreeAttribute :ValidationAttribute
     {
         public override bool IsValid(object? value)

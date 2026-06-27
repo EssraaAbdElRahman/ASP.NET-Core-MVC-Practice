@@ -18,7 +18,7 @@
 
         <div class="card-body">
 
-            <form asp-action="SaveNew" method="post">
+            <form asp-action="SaveNew" method="post" enctype="multipart/form-data">
 
                 <div asp-validation-summary="ModelOnly"
                      class="alert alert-danger">
@@ -66,7 +66,7 @@
                               class="text-danger"></span>
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    @*      <div class="col-md-6 mb-3">
                         <label asp-for="ImageUrl"
                                class="form-label fw-bold"></label>
 
@@ -76,8 +76,23 @@
 
                         <span asp-validation-for="ImageUrl"
                               class="text-danger"></span>
-                    </div>
+                    </div> *@
+                    <div class="col-md-6 mb-3">
 
+                        <label asp-for="ImageFile"
+                               class="form-label fw-bold">
+                            Image
+                        </label>
+
+                        <input asp-for="ImageFile"
+                               type="file"
+                               class="form-control"
+                               accept=".jpg,.jpeg,.png" />
+
+                        <span asp-validation-for="ImageFile"
+                              class="text-danger"></span>
+
+                    </div>
                 </div>
 
                 <div class="row">
